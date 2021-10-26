@@ -5,6 +5,8 @@ using UnityEngine;
 public class CañonController : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public Vector3 sizeToAdd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +39,31 @@ public class CañonController : MonoBehaviour
                 Debug.Log("Shoot Bullet number: "+i);
                 ShootCannon();
             }  
-        }}
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("You are shooting bigger bullets: ");
+            ShootBigCannon();
+
+        }
+
+    }
 
     void ShootCannon()
     {
-        Instantiate(bulletPrefab,transform);
+        Instantiate(bulletPrefab,getGeneratorTransform());
+    }
+
+    void ShootBigCannon()
+    {
+        Transform newTransform = bulletPrefab.transform;
+        newTransform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
+        Instantiate(bulletPrefab, newTransform);
+    }
+
+    Transform getGeneratorTransform()
+    {
+        GameObject generator = transform.GetChild(1).gameObject;
+        return generator.transform;
     }
 }

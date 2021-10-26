@@ -6,7 +6,10 @@ public class BulletController : MonoBehaviour
 {
     public float speed;
     public Vector3 direction;
+    public float timeToKillBullet;
+    private float timeUntilKillBullet;
     public int damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +20,32 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         MoveBullet();
+        checkTimers();
+
     }
 
     void MoveBullet()
     {
-        transform.Translate(speed*Time.deltaTime*direction);
+        transform.Translate(speed * Time.deltaTime * direction);
     }
+
+    void checkTimers()
+    {
+        timeToKillBullet -= Time.deltaTime;
+        if (timeToKillBullet <= 0)
+        {
+            DestroyBullet();
+        }
+    }
+
+    void DestroyBullet()
+    {
+        Destroy(gameObject);
+    }
+
+    //TODO: Check for changeSize in bullet Controller
+    //void ChangeSize()
+    //{
+      //  transform.localScale += new Vector3(0.2f,0.2f,0.2f);  
+    //}
 }
