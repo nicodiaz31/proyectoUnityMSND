@@ -6,11 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public string playerName="Nombre de jugador";  
     public int playerLives;
-    public float playerSpeed = 100.0f;
-    public float xSpeed=0.1f;
-    public float ySpeed=0.0f;
-    public float zSpeed=0.0f;
-    public Vector3 direction;
+    public float playerSpeed = 50.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +15,6 @@ public class PlayerController : MonoBehaviour
         playerLives=3;
         Debug.Log("Game starting");
         Debug.Log(transform.position);
-        transform.position = new Vector3(-15,2,1);
-        transform.localScale= new Vector3(1,1,1);
-        direction = new Vector3(xSpeed, ySpeed, zSpeed);
         
     }
 
@@ -29,7 +22,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //transform.position += new Vector3(xSpeed,ySpeed,zSpeed);
-        MovePlayer(direction);
+        MovePlayer();
     }
 
     void ReloadOneLife()
@@ -47,8 +40,37 @@ public class PlayerController : MonoBehaviour
         playerLives--;
     }
 
-    void MovePlayer(Vector3 movement)
+    void MovePlayer()
     {
-        transform.Translate(playerSpeed*Time.deltaTime*movement);
+        AudioSource audio = transform.GetChild(2).gameObject.GetComponent<AudioSource>();
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward);
+            
+            audio.UnPause();
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(playerSpeed * Time.deltaTime * Vector3.back);
+            audio.UnPause();
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(playerSpeed * Time.deltaTime * Vector3.left);
+            audio.UnPause();
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(playerSpeed * Time.deltaTime * Vector3.right);
+            audio.UnPause();
+        }
+        else
+        {
+            audio.Pause();
+        }
+
     }
+
+    
 }

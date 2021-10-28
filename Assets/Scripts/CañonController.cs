@@ -52,6 +52,8 @@ public class CañonController : MonoBehaviour
     void ShootCannon()
     {
         Instantiate(bulletPrefab,getGeneratorTransform());
+        AudioSource audio= transform.GetChild(2).gameObject.GetComponent<AudioSource>();
+        audio.Play();
     }
 
     void ShootBigCannon()
