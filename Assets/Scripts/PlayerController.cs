@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public string playerName="Nombre de jugador";  
     public int playerLives;
-    public float playerSpeed = 50.0f;
-
+    public float playerSpeed = 100.0f;
+    public float xSpeed=0.1f;
+    public float ySpeed=0.0f;
+    public float zSpeed=0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,62 +17,16 @@ public class PlayerController : MonoBehaviour
         playerLives=3;
         Debug.Log("Game starting");
         Debug.Log(transform.position);
+        transform.position = new Vector3(-15,2,1);
+        transform.localScale= new Vector3(1,1,1);
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.position += new Vector3(xSpeed,ySpeed,zSpeed);
-        MovePlayer();
-    }
-
-    void ReloadOneLife()
-    {
-        playerLives++;
-    }
-
-    void ReloadMaxLives()
-    {
-        playerLives = 3;
-    }
-
-    void LostLife()
-    {
-        playerLives--;
-    }
-
-    void MovePlayer()
-    {
-        AudioSource audio = transform.GetChild(2).gameObject.GetComponent<AudioSource>();
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward);
-            
-            audio.UnPause();
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.back);
-            audio.UnPause();
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.left);
-            audio.UnPause();
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.right);
-            audio.UnPause();
-        }
-        else
-        {
-            audio.Pause();
-        }
+        Debug.Log("... Frame passes...");
+        transform.position += new Vector3(xSpeed,ySpeed,zSpeed);
 
     }
-
-    
 }
