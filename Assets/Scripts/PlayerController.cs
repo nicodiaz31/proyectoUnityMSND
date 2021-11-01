@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public string playerName="Nombre de jugador";  
+    public string playerName = "Nombre de jugador";
     public int playerLives;
     public float playerSpeed = 5.0f;
+    public float playerRotationSpeed = 3f;
+    private Vector2 characterRotation = new Vector2();
 
     // Start is called before the first frame update
     void Start()
     {
-        playerName="Nombre de jugador";
-        playerLives=3;
+        playerName = "Nombre de jugador";
+        playerLives = 3;
         Debug.Log("Game starting");
         Debug.Log(transform.position);
-        
+
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         //transform.position += new Vector3(xSpeed,ySpeed,zSpeed);
         MovePlayer();
+        RotatePlayer();
     }
 
     void ReloadOneLife()
@@ -44,11 +47,12 @@ public class PlayerController : MonoBehaviour
     {
         float ejeHorizontal = Input.GetAxisRaw("Horizontal");
         float ejeVertical = Input.GetAxisRaw("Vertical");
+        
         transform.Translate(playerSpeed * Time.deltaTime * new Vector3(ejeHorizontal, 0, ejeVertical));
 
         AudioSource audio = transform.GetChild(2).gameObject.GetComponent<AudioSource>();
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             audio.UnPause();
         }
@@ -58,6 +62,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    
+    void RotatePlayer()
+    {
+        characterRotation.x +=  Input.GetAxis("Mouse X") * playerRotationSpeed;
+        characterRotation.y += Input.GetAxis("Mouse Y") * playerRotationSpeed;
+        Quaternion rotation= Quaternion.Euler(-characterRotation.y, characterRotation.x, 0);
+        transform.localRotation = Quaternion.Euler(-characterRotation.y, characterRotation.x, 0);
+    }
 }

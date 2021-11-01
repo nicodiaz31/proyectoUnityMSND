@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     GameObject mainCam;
     GameObject secondaryCam;
-
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -19,7 +18,7 @@ public class CameraController : MonoBehaviour
           if (Input.GetKeyDown(KeyCode.X))
             {
 
-            if(mainCam.active==true)
+            if(mainCam.activeSelf==true)
             {
                 mainCam.SetActive(false);
                 secondaryCam.SetActive(true);
@@ -34,4 +33,5 @@ public class CameraController : MonoBehaviour
 
         
     }
+   
 }
