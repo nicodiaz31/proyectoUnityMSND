@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public string playerName="Nombre de jugador";  
     public int playerLives;
-    public float playerSpeed = 50.0f;
+    public float playerSpeed = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,27 +42,14 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        float ejeHorizontal = Input.GetAxisRaw("Horizontal");
+        float ejeVertical = Input.GetAxisRaw("Vertical");
+        transform.Translate(playerSpeed * Time.deltaTime * new Vector3(ejeHorizontal, 0, ejeVertical));
+
         AudioSource audio = transform.GetChild(2).gameObject.GetComponent<AudioSource>();
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward);
-            
-            audio.UnPause();
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.back);
-            audio.UnPause();
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.left);
-            audio.UnPause();
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.right);
             audio.UnPause();
         }
         else
