@@ -13,6 +13,7 @@ public class PortalController : MonoBehaviour
     {
 
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
+        player1 = GameObject.FindGameObjectWithTag("Player");
         portal = GetComponent<Rigidbody>();
     }
 
@@ -31,12 +32,13 @@ public class PortalController : MonoBehaviour
         {
             if (sizex2 == false)
             {
-                transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2, transform.localScale.z / 2);
+                
+                player1.transform.localScale = new Vector3(player1.transform.localScale.x / 2, player1.transform.localScale.y / 2, player1.transform.localScale.z / 2);
                 sizex2 = true;
             }
             else
             {
-                transform.localScale = new Vector3(transform.localScale.x * 2, transform.localScale.y * 2, transform.localScale.z * 2);
+                player1.gameObject.transform.localScale = new Vector3(player1.transform.localScale.x * 2, player1.transform.localScale.y * 2, player1.transform.localScale.z * 2);
                 sizex2 = false;
             }
 

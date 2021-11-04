@@ -70,28 +70,11 @@ public class PlayerController : MonoBehaviour
         Quaternion rotation= Quaternion.Euler(-characterRotation.y, characterRotation.x, 0);
         transform.localRotation = Quaternion.Euler(-characterRotation.y, characterRotation.x, 0);
     }
-    public void ChangeSize()
-    {
-        if(sizex2==false)
-        {
-            transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2, transform.localScale.z / 2);
-            sizex2 = true;
-        }
-        else
-        {
-            transform.localScale = new Vector3(transform.localScale.x*2, transform.localScale.y * 2, transform.localScale.z * 2);
-            sizex2 = false;
-        }
-    }
+    
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (collision.gameObject.CompareTag("Portal"))
-        {
-            Debug.Log(collision.gameObject.name);
-            Debug.Log(collision.gameObject.tag);
-            ChangeSize();
-        }
+        
     }
 
 }
