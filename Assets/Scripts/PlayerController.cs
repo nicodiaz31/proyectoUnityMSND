@@ -73,8 +73,17 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        
-        
+        if (collision.gameObject.tag != "DarkPortal")
+        {
+            Debug.Log(collision.gameObject.name + "No contiene shrinker");
+        }
+        else
+        {
+            Debug.Log(collision.gameObject.tag + "contiene shrinker");
+
+        }
+
+
     }
 
 }

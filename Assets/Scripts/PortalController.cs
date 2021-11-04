@@ -25,25 +25,29 @@ public class PortalController : MonoBehaviour
     private void FixedUpdate()
     {
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.name == "Cylinder.007")
         {
             if (sizex2 == false)
             {
-                
+
                 player1.transform.localScale = new Vector3(player1.transform.localScale.x / 2, player1.transform.localScale.y / 2, player1.transform.localScale.z / 2);
                 sizex2 = true;
             }
             else
             {
-                player1.gameObject.transform.localScale = new Vector3(player1.transform.localScale.x * 2, player1.transform.localScale.y * 2, player1.transform.localScale.z * 2);
+                player1.transform.localScale = new Vector3(player1.transform.localScale.x * 2, player1.transform.localScale.y * 2, player1.transform.localScale.z * 2);
                 sizex2 = false;
             }
 
 
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
     
 }

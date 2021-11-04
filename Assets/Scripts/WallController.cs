@@ -20,17 +20,13 @@ public class WallController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Toco objeto");
         
     }
     private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("Mantengo");
-
         if (collision.gameObject.tag == "Player")
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
             if (timer > 2)
             {
 
@@ -43,7 +39,6 @@ public class WallController : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("Suelto Objeto");
         timer = 0;
         
     }
