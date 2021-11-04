@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 710390968}
   - component: {fileID: 710390969}
   m_Layer: 0
-  m_Name: portal
+  m_Name: Portal
   m_TagString: DarkPortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,8 +581,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710390963}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -9.7, y: 35, z: -42.25}
-  m_LocalScale: {x: 2.0067, y: 1, z: 6.687757}
+  m_LocalPosition: {x: -9.7, y: 35, z: -42.813}
+  m_LocalScale: {x: 2.0067, y: 1.5826008, z: 6.687757}
   m_Children: []
   m_Father: {fileID: 1964687122}
   m_RootOrder: 1
@@ -1577,7 +1577,7 @@ BoxCollider:
   m_GameObject: {fileID: 919132148513202413}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3, y: 7, z: 1}
   m_Center: {x: 0, y: -2, z: 0}
@@ -1752,7 +1752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2661347557327075945, guid: bf1c5466ef7764099b94406010857368, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2716859184047714011, guid: bf1c5466ef7764099b94406010857368, type: 3}
       propertyPath: m_Layer
