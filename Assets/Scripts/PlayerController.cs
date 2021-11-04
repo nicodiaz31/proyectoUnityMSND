@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 5.0f;
     public float playerRotationSpeed = 3f;
     private Vector2 characterRotation = new Vector2();
+    public bool sizex2 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -69,4 +70,28 @@ public class PlayerController : MonoBehaviour
         Quaternion rotation= Quaternion.Euler(-characterRotation.y, characterRotation.x, 0);
         transform.localRotation = Quaternion.Euler(-characterRotation.y, characterRotation.x, 0);
     }
+    public void ChangeSize()
+    {
+        if(sizex2==false)
+        {
+            transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2, transform.localScale.z / 2);
+            sizex2 = true;
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x*2, transform.localScale.y * 2, transform.localScale.z * 2);
+            sizex2 = false;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Portal"))
+        {
+            Debug.Log(collision.gameObject.name);
+            Debug.Log(collision.gameObject.tag);
+            ChangeSize();
+        }
+    }
+
 }
