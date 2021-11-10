@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float playerRotationSpeed = 3f;
     private Vector2 characterRotation = new Vector2();
     public bool sizex2 = false;
+    private Rigidbody rbPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
         playerLives = 3;
         Debug.Log("Game starting");
         Debug.Log(transform.position);
+        rbPlayer = GetComponent<Rigidbody>();
 
     }
 
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
     {
         float ejeHorizontal = Input.GetAxisRaw("Horizontal");
         float ejeVertical = Input.GetAxisRaw("Vertical");
+        Debug.Log(ejeHorizontal + "   " + ejeVertical);
+        //rbPlayer.AddForce(playerSpeed * Time.deltaTime * new Vector3(ejeHorizontal, 0, ejeVertical));
         
         transform.Translate(playerSpeed * Time.deltaTime * new Vector3(ejeHorizontal, 0, ejeVertical));
 

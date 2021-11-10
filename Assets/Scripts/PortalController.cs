@@ -28,7 +28,7 @@ public class PortalController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.gameObject.name == "Cylinder.007")
+        if (other.gameObject.name == "Player")
         {
             if (sizex2 == false)
             {
