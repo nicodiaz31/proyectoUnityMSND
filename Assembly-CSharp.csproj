@@ -60,11 +60,13 @@
     <Compile Include="Assets/Scripts/BulletInstatiator.cs" />
     <Compile Include="Assets/Scripts/BulletController.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/PortalController.cs" />
     <Compile Include="Assets/Scripts/ChaseController.cs" />
     <Compile Include="Assets/Scripts/CañonController.cs" />
     <Compile Include="Assets/Scripts/EnemyController.cs" />
-    <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Scripts/ILookAtInterface.cs" />
+    <Compile Include="Assets/Scripts/CameraController.cs" />
+    <Compile Include="Assets/Scripts/WallController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
